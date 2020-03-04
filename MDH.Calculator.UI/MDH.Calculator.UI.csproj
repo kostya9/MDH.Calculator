@@ -76,5 +76,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MDH.Calculator\MDH.Calculator.csproj">
+      <Project>{bdfb8f43-8bb7-47b2-bee7-0db30c15ab67}</Project>
+      <Name>MDH.Calculator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
