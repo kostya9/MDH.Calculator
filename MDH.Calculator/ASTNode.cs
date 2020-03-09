@@ -11,9 +11,10 @@ namespace MDH.Calculator
 
     public class RuleNode : ASTNode
     {
-        public RuleNode(string name)
+        public RuleNode(string name, params ASTNode[] children)
         {
             Name = name;
+            Children = children;
         }
 
         public override string Name { get; }

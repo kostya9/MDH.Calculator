@@ -9,10 +9,8 @@ namespace MDH.Calculator.Tests
         [TestMethod]
         public void BasicPlus()
         {
-            var res = Calculator.Calculate("2*2 + 1 / 3 * 2");
+            var res = Parser.Parse("1-9+66-9999+5");
 
-            Assert.AreEqual(res, 4.66, 0.01);
-            //test push
         }
     }
 }
