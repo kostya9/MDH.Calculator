@@ -428,5 +428,46 @@ namespace MDH.Calculator.Tests
             Assert.AreEqual(res, 4.25, 0.01);
             //test push
         }
+
+        public void Test50()
+        {
+            var res = Calculator.Calculate("5+-6");
+
+            Assert.AreEqual(res,"error", 0.01);
+            //test push
+        }
+
+        public void Test51()
+        {
+            var res = Calculator.Calculate("5+-6");
+
+            Assert.AreEqual(res, "error", 0.01);
+            //test push
+        }
+
+        public void Test52()
+        {
+            var res = Calculator.Calculate("5*/6");
+
+            Assert.AreEqual(res, "error", 0.01);
+            //test push
+        }
+
+        public void Test53()
+        {
+            var res = Calculator.Calculate("--56");
+
+            Assert.AreEqual(res, "error", 0.01);
+            //test push
+        }
+
+        public void Test54()
+        {
+            var res = Calculator.Calculate("5+-6");
+
+            Assert.AreEqual(res, "error", 0.01);
+            //test push
+        }
+
     }
 }
