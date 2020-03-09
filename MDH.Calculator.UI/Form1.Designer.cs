@@ -48,8 +48,9 @@
             this.btnDot = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ErrorLabel = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -264,6 +265,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ErrorLabel);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.btn3);
@@ -291,13 +293,14 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // ErrorLabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 48);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(314, 35);
-            this.textBox1.TabIndex = 19;
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Location = new System.Drawing.Point(18, 21);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(83, 20);
+            this.ErrorLabel.TabIndex = 22;
+            this.ErrorLabel.Text = "ErrorLabel";
             // 
             // btnRemove
             // 
@@ -309,6 +312,14 @@
             this.btnRemove.Text = "<--";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(18, 48);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(314, 35);
+            this.textBox1.TabIndex = 19;
             // 
             // Form1
             // 
@@ -353,6 +364,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label ErrorLabel;
     }
 }
 

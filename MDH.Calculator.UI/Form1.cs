@@ -35,7 +35,15 @@ namespace MDH.Calculator.UI
      
         private void BtnCalc_Click(object sender, EventArgs e)
         {
-            // TODO: math here
+            try {
+                // TODO: math here 
+                //write in the box
+            }
+            catch (CalculatorException err) {
+                ErrorLabel.Text = err.Message;
+                //write in the box division by zero not possiblr
+            }
+
             textBox1.Text = "";
         }
 
@@ -102,5 +110,6 @@ namespace MDH.Calculator.UI
                 textBox1.Text = equation.Remove(n - 1);
             }
         }
+
     }
 }
