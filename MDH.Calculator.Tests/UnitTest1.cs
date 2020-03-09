@@ -257,13 +257,6 @@ namespace MDH.Calculator.Tests
             Assert.AreEqual(res, ?, 0.01);
             //test pyet
         }
-        [TestMethod]
-        public void Test29()
-        {
-            var res = Calculator.Calculate("-a/6");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //test pyet
-        }
+        
     }
 }
