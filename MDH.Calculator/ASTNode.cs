@@ -9,11 +9,12 @@ namespace MDH.Calculator
         public abstract string Name { get; }
     }
 
-    public class BinOperationNode : ASTNode
+    public class RuleNode : ASTNode
     {
-        public BinOperationNode(string name)
+        public RuleNode(string name, params ASTNode[] children)
         {
             Name = name;
+            Children = children;
         }
 
         public override string Name { get; }
@@ -22,8 +23,8 @@ namespace MDH.Calculator
 
         public double Calculate()
         {
-            double num1 = Children[0].Name.Equals("E3") ? ((NumberNode)Children[0]).Value : ((BinOperationNode)Children[0]).Calculate();
-            double num2 = Children[2].Name.Equals("E3") ? ((NumberNode)Children[2]).Value : ((BinOperationNode)Children[0]).Calculate();
+            double num1 = Children[0].Name.Equals("E3") ? ((NumberNode)Children[0]).Value : ((RuleNode)Children[0]).Calculate();
+            double num2 = Children[2].Name.Equals("E3") ? ((NumberNode)Children[2]).Value : ((RuleNode)Children[0]).Calculate();
             double result;
             if (num2 == 0) throw new Exception("Cannot divide with 0!");
             var symbol = ((SymbolNode)Children[1]).Symbol;

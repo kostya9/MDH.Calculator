@@ -6,7 +6,7 @@ namespace MDH.Calculator.Tests
     [TestClass]
     public class CalculatorTests
     {
-
+        /*
         [TestMethod]
         public void Test1()
         {
@@ -447,7 +447,7 @@ namespace MDH.Calculator.Tests
 
         public void Test52()
         {
-            var res = Calculator.Calculate("5*/6");
+            var res = Calculator.Calculate("5*//*6");
 
             Assert.AreEqual(res, "error", 0.01);
             //test push
@@ -467,6 +467,12 @@ namespace MDH.Calculator.Tests
 
             Assert.AreEqual(res, "error", 0.01);
             //test push
+        }*/
+
+        public void BasicPlus()
+        {
+            var res = Parser.Parse("1-9+66-9999+5");
+
         }
 
     }
