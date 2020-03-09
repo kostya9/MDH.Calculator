@@ -192,7 +192,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("0.5/0");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -201,7 +201,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("a+5");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -210,7 +210,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("a-6");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -219,7 +219,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("a*6");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -228,7 +228,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("a/6");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -237,7 +237,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("6/a");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -246,7 +246,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("-a*6");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
 
         [TestMethod]
@@ -255,7 +255,7 @@ namespace MDH.Calculator.Tests
             var res = Calculator.Calculate("-a/6");
 
             Assert.AreEqual(res, ?, 0.01);
-            //test pyet
+            //error
         }
         
     }
