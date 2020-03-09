@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MDH.Calculator
 {
-    public  class CalculatorException
+    public  class CalculatorException : Exception
     {
     }
 }
