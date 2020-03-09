@@ -14,15 +14,6 @@ namespace MDH.Calculator
             return (double)result;
         }
         
-        public static void ErrorHandeling(string calculateResult)
-        {
-        double positive = double.PositiveInfinity;
-        double negative = double.NegativeInfinity;
-            if (Convert.ToDouble(calculateResult) == positive|| Convert.ToDouble(calculateResult) == negative)
-                {
-                    Console.WriteLine("divided by zero is not possible");
-                return;
-                }
-        }
+       
     }
 }
