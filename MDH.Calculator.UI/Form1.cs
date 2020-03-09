@@ -32,7 +32,7 @@ namespace MDH.Calculator.UI
                 textBox1.AppendText(str);
             }
         }
-
+     
         private void BtnCalc_Click(object sender, EventArgs e)
         {
             // TODO: math here
@@ -50,29 +50,56 @@ namespace MDH.Calculator.UI
             switch(str) 
             {
                 case "+":
-                    textBox1.AppendText(str);
                     break;
                 case "-":
-                    textBox1.AppendText(str);
                     break;
                 case "*":
-                    textBox1.AppendText(str);
                     break;
                 case "/":
-                    textBox1.AppendText(str);
                     break;
                 case ".":
-                    textBox1.AppendText(str);
                     break;
                 case "(":
                     textBox1.AppendText(str);
-                    break;
+                    return;
                 case ")":
-                    textBox1.AppendText(str);
-                    break;
+                    if(textBox1.Text.Length != 0)
+                        textBox1.AppendText(str);
+                    return;
                 default:
                     Console.WriteLine("Warning! Invalid operator in BtnOperator_Click()");
-                    break;
+                    return;
+            }
+
+            string equation = textBox1.Text;
+            int n = equation.Length;
+
+            // Handle duplicate operators
+            if(n != 0) 
+            {
+                if(equation[n-1] == '+' || equation[n - 1] == '-' || equation[n - 1] == '/' || equation[n - 1] == '*' || equation[n - 1] == '.') 
+                {
+                    textBox1.Text = equation.Remove(n - 1) + str;
+                    return;
+                }
+            } 
+            // Handle first operator
+            else {
+                if (str == "+" || str == "/" || str == "*" || str == ".") {
+                    textBox1.Text = "0" + str;
+                    return;
+                }
+            }
+            textBox1.AppendText(str);
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e) {
+            string equation = textBox1.Text;
+            int n = equation.Length;
+
+            if(n != 0) 
+            {
+                textBox1.Text = equation.Remove(n - 1);
             }
         }
     }
