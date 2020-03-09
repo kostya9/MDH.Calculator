@@ -46,7 +46,34 @@ namespace MDH.Calculator.UI
 
         private void BtnOperator_Click(object sender, EventArgs e)
         {
-
+            string str = ((Button)sender).Text;
+            switch(str) 
+            {
+                case "+":
+                    textBox1.AppendText(str);
+                    break;
+                case "-":
+                    textBox1.AppendText(str);
+                    break;
+                case "*":
+                    textBox1.AppendText(str);
+                    break;
+                case "/":
+                    textBox1.AppendText(str);
+                    break;
+                case ".":
+                    textBox1.AppendText(str);
+                    break;
+                case "(":
+                    textBox1.AppendText(str);
+                    break;
+                case ")":
+                    textBox1.AppendText(str);
+                    break;
+                default:
+                    Console.WriteLine("Warning! Invalid operator in BtnOperator_Click()");
+                    break;
+            }
         }
     }
 }

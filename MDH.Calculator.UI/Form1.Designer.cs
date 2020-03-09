@@ -170,6 +170,7 @@
             this.button12.TabIndex = 11;
             this.button12.Text = "(";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.BtnOperator_Click);
             // 
             // button13
             // 
@@ -179,6 +180,7 @@
             this.button13.TabIndex = 12;
             this.button13.Text = ")";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.BtnOperator_Click);
             // 
             // btnSub
             // 
@@ -228,6 +230,7 @@
             this.btnDot.TabIndex = 17;
             this.btnDot.Text = ".";
             this.btnDot.UseVisualStyleBackColor = true;
+            this.btnDot.Click += new System.EventHandler(this.BtnOperator_Click);
             // 
             // btnReset
             // 
