@@ -8,8 +8,8 @@ namespace MDH.Calculator
     {
         public static double Eval(string input)
         {
-            var tree = Parser.Parse(input);
-            return 0;
+            RuleNode tree = (RuleNode)Parser.Parse(input);
+            return tree.Calculate();
         }
     }
 }

@@ -44,7 +44,7 @@ namespace MDH.Calculator
                     break;
                 default:
                     throw new Exception("Invalid operation symbol!");
-                    break;
+
             }
             return result;
         }
