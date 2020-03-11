@@ -74,4 +74,9 @@ namespace MDH.Calculator
             Symbol = symbol;
         }
     }
+
+    public class EmptyNode : ASTNode
+    {
+        public override string Name => "Empty";
+    }
 }

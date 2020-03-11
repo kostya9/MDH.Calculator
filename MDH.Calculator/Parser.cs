@@ -8,7 +8,7 @@ namespace MDH.Calculator
     {
         public static ASTNode Parse(string value)
         {
-            var result = E1Rule(0, value);
+            var result = ERule(0, value);
 
             if(result.IsError)
             {
@@ -23,81 +23,89 @@ namespace MDH.Calculator
             return result.Node;
         }
 
+        private static ParseResult ERule(int position, string input)
+        {
+            var t = TRule(position, input);
+
+            if (t.IsError)
+            {
+                return t;
+            }
+
+            var e1 = E1Rule(t.NewPosition, input);
+            if (e1.IsError)
+            {
+                return e1;
+            }
+
+            var node = new RuleNode("E", t.Node, e1.Node);
+            return ParseResult.Success(node, e1.NewPosition);
+        }
+
         private static ParseResult E1Rule(int position, string input)
         {
-            var plus = PlusRule(position, input);
+            var plus = E1Subrule(position, input, '+');
 
-            if(!plus.IsError)
+            if (!plus.IsError)
             {
                 return plus;
             }
 
-            var minus = MinusRule(position, input);
+            var minus = E1Subrule(position, input, '-');
             if (!minus.IsError)
             {
                 return minus;
             }
 
-            return E2Rule(position, input);
+            return ParseResult.Success(new EmptyNode(), position);
         }
 
-        private static ParseResult PlusRule(int initPosition, string input)
+        private static ParseResult E1Subrule(int initPosition, string input, char op)
         {
-            return BinaryRule(initPosition, input, '+', "E1");
-        }
-
-        private static ParseResult MinusRule(int initPosition, string input)
-        {
-            return BinaryRule(initPosition, input, '-', "E1");
-        }
-
-        private static ParseResult BinaryRule(int initPosition, string input, char op, string ruleName)
-        {
-            var left = E2Rule(initPosition, input);
-
-            if (left.IsError)
-            {
-                return left;
-            }
-
-
-            if(left.NewPosition >= input.Length)
+            if (initPosition >= input.Length)
             {
                 return ParseResult.Failure(initPosition, "Expected an operator, found the EOF");
             }
 
-            var symbol = input[left.NewPosition];
+            var symbol = input[initPosition];
             if (symbol != op)
             {
                 return ParseResult.Failure(initPosition, $"Expected '{op}' symbol");
             }
 
-            var position = left.NewPosition + 1;
-            var right = E1Rule(position, input);
+            var right = TRule(initPosition + 1, input);
 
             if (right.IsError)
+            {
+                return right;
+            }
+
+            var position = right.NewPosition;
+            var appended = E1Rule(position, input);
+
+            if (appended.IsError)
             {
                 return ParseResult.Failure(initPosition, right.Error);
             }
 
-            var node = new RuleNode(ruleName, left.Node, new SymbolNode(symbol), right.Node);
-            return ParseResult.Success(node, right.NewPosition);
+            var node = new RuleNode("E1", new SymbolNode(symbol), right.Node, appended.Node);
+            return ParseResult.Success(node, appended.NewPosition);
         }
 
-        private static ParseResult E2Rule(int position, string input)
+        private static ParseResult TRule(int position, string input)
         {
-            var e3 = E3Rule(position, input);
+            var f = FRule(position, input);
 
-            if (e3.IsError)
+            if (f.IsError)
             {
-                return e3;
+                return f;
             }
 
-            var node = new RuleNode("E2", e3.Node);
-            return ParseResult.Success(node, e3.NewPosition);
+            var node = new RuleNode("T", f.Node);
+            return ParseResult.Success(node, f.NewPosition);
         }
 
-        private static ParseResult E3Rule(int position, string input)
+        private static ParseResult FRule(int position, string input)
         {
             int count = 0;
             while (position + count < input.Length && char.IsDigit(input[position + count]))
@@ -111,7 +119,7 @@ namespace MDH.Calculator
             }
 
             var parsed = int.Parse(input.Substring(position, count));
-            var node = new RuleNode("E3", new NumberNode(parsed));
+            var node = new RuleNode("F", new NumberNode(parsed));
 
             return ParseResult.Success(node, position + count);
         }
