@@ -10,12 +10,12 @@ namespace MDH.Calculator
         {
             var result = ERule(0, value);
 
-            if(result.IsError)
+            if (result.IsError)
             {
                 throw new ArgumentException(result.Error);
             }
 
-            if(result.NewPosition != value.Length)
+            if (result.NewPosition != value.Length)
             {
                 throw new ArgumentException("Could not parse symbols starting from " + result.NewPosition);
             }
@@ -113,15 +113,68 @@ namespace MDH.Calculator
                 count++;
             }
 
-            if(count == 0)
+            if (count == 0)
             {
                 return ParseResult.Failure(position, "Expected a number");
             }
 
             var parsed = int.Parse(input.Substring(position, count));
-            var node = new RuleNode("F", new NumberNode(parsed));
+            var node = new NumberNode(parsed);
 
             return ParseResult.Success(node, position + count);
+        }
+
+
+
+        private static ParseResult T1Rule(int position, string input)
+        {
+            var mul = T1Subrule(position, input, '*');
+
+            if (!mul.IsError)
+            {
+                return mul;
+            }
+
+            var div = T1Subrule(position, input, '/');
+            if (!div.IsError)
+            {
+                return div;
+            }
+
+            return ParseResult.Success(new EmptyNode(), position);
+        }
+
+
+        private static ParseResult T1Subrule(int initPosition, string input, char op)
+        {
+            if (initPosition >= input.Length)
+            {
+                return ParseResult.Failure(initPosition, "Expected an operator, found the EOF");
+            }
+
+            var symbol = input[initPosition];
+            if (symbol != op)
+            {
+                return ParseResult.Failure(initPosition, $"Expected '{op}' symbol");
+            }
+
+            var right = FRule(initPosition + 1, input);
+
+            if (right.IsError)
+            {
+                return right;
+            }
+
+            var position = right.NewPosition;
+            var appended = T1Rule(position, input);
+
+            if (appended.IsError)
+            {
+                return ParseResult.Failure(initPosition, right.Error);
+            }
+
+            var node = new RuleNode("T1", new SymbolNode(symbol), right.Node, appended.Node);
+            return ParseResult.Success(node, appended.NewPosition);
         }
     }
 
