@@ -8,11 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MDH.Calculator.UI {
+   
     public partial class Form1 : Form {
+
+        //Calculator calculator;
+        public static string calculator(string input) {
+            DataTable calculator = new DataTable();
+            var test = calculator.Compute(input, " ").ToString();
+            return  test;
+        }
         public Form1() {
             InitializeComponent();
             ErrorLabel.Text = "";
+            
         }
 
         private void num_Click(object sender, EventArgs e) {
@@ -28,8 +38,10 @@ namespace MDH.Calculator.UI {
         }
 
         private void BtnCalc_Click(object sender, EventArgs e) {
+            string output = "";
             try {
                 // TODO: math here 
+                output = calculator((textBox1.Text).ToString());
                 //write in the box
             }
             catch (CalculatorException err) {
@@ -37,7 +49,7 @@ namespace MDH.Calculator.UI {
                 //write in the box division by zero not possiblr
             }
 
-            textBox1.Text = "";
+            textBox1.Text = output;
         }
 
         private void BtnReset_Click(object sender, EventArgs e) {
@@ -92,7 +104,7 @@ namespace MDH.Calculator.UI {
             }
             // Handle first operator
             else {
-                if (str == "+" || str == "/" || str == "*" || str == ".") {
+                if (str == "-" || str == "+" || str == "/" || str == "*" || str == ".") {
                     textBox1.Text = "0" + str;
                     return;
                 }
@@ -110,4 +122,5 @@ namespace MDH.Calculator.UI {
         }
 
     }
+
 }
