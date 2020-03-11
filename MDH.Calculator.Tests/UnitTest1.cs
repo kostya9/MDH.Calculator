@@ -472,9 +472,9 @@ namespace MDH.Calculator.Tests
         [TestMethod]
         public void BasicPlus()
         {
-            var res = Calculator.Eval("1-1+1-1+1-1*2");
+            var res = Calculator.Eval("9+6*2-50/2");
             //var res = Calculator.Eval("2+2+2");
-            Assert.AreEqual(res, -1);
+            Assert.AreEqual(res, -4);
         }
 
     }

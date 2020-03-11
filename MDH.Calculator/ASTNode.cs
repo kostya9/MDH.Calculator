@@ -66,8 +66,11 @@ namespace MDH.Calculator
                 case '+': return left + right.Value.Item2;
                 case '-': return left - right.Value.Item2;
                 case '*': return left * right.Value.Item2;
-                case '/': return left / right.Value.Item2;
-                default: throw new CalculatorException();
+                case '/':
+                    if (right.Value.Item2 == 0)
+                        throw new CalculatorException("Divison by 0 is as abomination!");
+                    return left / right.Value.Item2;
+                default: throw new CalculatorException("Invalid symbol");
             }
         }
 
