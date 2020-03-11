@@ -28,9 +28,10 @@ namespace MDH.Calculator
 
         private (char, double)? E1Calculate(ASTNode e1) 
         {
-            var rule = (RuleNode)e1;
-            if (rule.Children.Length == 0)
+            if (e1 is EmptyNode)
                 return null;
+
+            var rule = (RuleNode)e1;
             char symbol = ((SymbolNode)rule.Children[0]).Symbol;
             var t = TCalculate((RuleNode)rule.Children[1]);
             var e1tuple = E1Calculate(rule.Children[2]);
@@ -72,11 +73,12 @@ namespace MDH.Calculator
 
         private (char, double)? T1Calculate(ASTNode t)
         {
-            var rule = (RuleNode)t;
-            if (rule.Children.Length == 0)
+            if (t is EmptyNode)
                 return null;
+
+            var rule = (RuleNode)t;
             char symbol = ((SymbolNode)rule.Children[0]).Symbol;
-            var f = FCalculate((RuleNode)rule.Children[1]);
+            var f = FCalculate(rule.Children[1]);
             var e1tuple = E1Calculate(rule.Children[2]);
             var right = CalcOp(f, e1tuple);
 
