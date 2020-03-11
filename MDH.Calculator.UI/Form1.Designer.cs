@@ -1,6 +1,6 @@
 ﻿namespace MDH.Calculator.UI
 {
-    partial class Form1
+    partial class GUI
     {
         /// <summary>
         /// Required designer variable.
@@ -321,7 +321,7 @@
             this.textBox1.Size = new System.Drawing.Size(314, 35);
             this.textBox1.TabIndex = 19;
             // 
-            // Form1
+            // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -329,7 +329,7 @@
             this.ClientSize = new System.Drawing.Size(386, 450);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "GUI";
             this.ShowIcon = false;
             this.Text = "Calculator";
             this.groupBox1.ResumeLayout(false);
