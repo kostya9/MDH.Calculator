@@ -39,6 +39,10 @@ namespace MDH.Calculator.UI {
 
         private void BtnCalc_Click(object sender, EventArgs e) {
             string output = "";
+            string equation = textBox1.Text;
+            int n = equation.Length;
+            if (equation[n - 1] == '+' || equation[n - 1] == '-' || equation[n - 1] == '*' || equation[n - 1] == '/')
+                return;
             try {
                 // TODO: math here 
                 output = calculator((textBox1.Text).ToString());
