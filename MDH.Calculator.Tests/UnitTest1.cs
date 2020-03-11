@@ -472,7 +472,7 @@ namespace MDH.Calculator.Tests
         [TestMethod]
         public void BasicPlus()
         {
-            var res = Parser.Parse("1-9+66-9999+5");
+            var res = Parser.Parse("1-9*66/9999+5");
             //var res = Calculator.Eval("2+2+2");
             //Assert.AreEqual(res, 6);
         }
