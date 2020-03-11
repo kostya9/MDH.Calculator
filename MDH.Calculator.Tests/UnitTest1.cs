@@ -6,15 +6,13 @@ namespace MDH.Calculator.Tests
     [TestClass]
     public class CalculatorTests
     {
-        /*
         [TestMethod]
         public void Test1()
         {
             var res = Calculator.Calculate("5+6");
 
             Assert.AreEqual(res, 11, 0.01);
-
-        }
+        } 
 
         [TestMethod]
         public void Test2()
@@ -57,9 +55,9 @@ namespace MDH.Calculator.Tests
         {
             var res = Calculator.Calculate("4/0");
 
-            Assert.AreEqual(res, 'can not divide by 0', 0.01);
+            Assert.AreEqual(res, 8, 0.01);
 
-        }
+        } //Division by 0 
 
         [TestMethod]
         public void Test7()
@@ -88,32 +86,7 @@ namespace MDH.Calculator.Tests
 
         }
 
-        [TestMethod]
-        public void Test10()
-        {
-            var res = Calculator.Calculate("(-5)*(-5)");
-
-            Assert.AreEqual(res, 25, 0.01);
-
-        }
-
-        [TestMethod]
-        public void Test11()
-        {
-            var res = Calculator.Calculate("8/(-4)");
-
-            Assert.AreEqual(res, -2, 0.01);
-
-        }
-
-        [TestMethod]
-        public void Test12()
-        {
-            var res = Calculator.Calculate("(-8)/(-4)");
-
-            Assert.AreEqual(res, 2, 0.01);
-
-        }
+       
 
         [TestMethod]
         public void Test13()
@@ -124,14 +97,6 @@ namespace MDH.Calculator.Tests
 
         }
 
-        [TestMethod]
-        public void Test14()
-        {
-            var res = Calculator.Calculate("0.5+(-0.5)");
-
-            Assert.AreEqual(res, 0, 0.01);
-
-        }
 
         [TestMethod]
         public void Test15()
@@ -142,41 +107,7 @@ namespace MDH.Calculator.Tests
 
         }
 
-        [TestMethod]
-        public void Test16()
-        {
-            var res = Calculator.Calculate("(-0.5)*(-0.6)");
-
-            Assert.AreEqual(res, 0, 0.01);
-
-        }
-
-        [TestMethod]
-        public void Test17()
-        {
-            var res = Calculator.Calculate("(-0.5)*0");
-
-            Assert.AreEqual(res, 0, 0.01);
-
-        }
-
-        [TestMethod]
-        public void Test18()
-        {
-            var res = Calculator.Calculate("(-0.5)/(-0.5)");
-
-            Assert.AreEqual(res, 1, 0.01);
-
-        }
-
-        [TestMethod]
-        public void Test19()
-        {
-            var res = Calculator.Calculate("(-0.6)/0.6");
-
-            Assert.AreEqual(res, -1, 0.01);
-
-        }
+    
 
         [TestMethod]
         public void Test20()
@@ -192,148 +123,12 @@ namespace MDH.Calculator.Tests
         {
             var res = Calculator.Calculate("0.5/0");
 
-            Assert.AreEqual(res, ?, 0.01);
+            Assert.AreEqual(res, 8 , 0.01);
             //error
         }
 
-        [TestMethod]
+        
         public void Test22()
-        {
-            var res = Calculator.Calculate("a+5");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test23()
-        {
-            var res = Calculator.Calculate("a-6");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test24()
-        {
-            var res = Calculator.Calculate("a*6");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test25()
-        {
-            var res = Calculator.Calculate("a/6");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test26()
-        {
-            var res = Calculator.Calculate("6/a");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test27()
-        {
-            var res = Calculator.Calculate("-a*6");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test28()
-        {
-            var res = Calculator.Calculate("-a/6");
-
-            Assert.AreEqual(res, ?, 0.01);
-            //error
-        }
-
-        [TestMethod]
-        public void Test29()
-        {
-            var res = Calculator.Calculate("6/(-a)");
-
-            Assert.AreEqual(res, "error", 0.01);
-            
-        }
-
-        [TestMethod]
-        public void Test30()
-        {
-            var res = Calculator.Calculate("a+0.5");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test31()
-        {
-            var res = Calculator.Calculate("a-0.6");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test32()
-        {
-            var res = Calculator.Calculate("a*0.5");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test33()
-        {
-            var res = Calculator.Calculate("a/0.5");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test34()
-        {
-            var res = Calculator.Calculate("0.5-a");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test35()
-        {
-            var res = Calculator.Calculate("0.5/a");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test36()
-        {
-            var res = Calculator.Calculate("-0.5-a");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test37()
-        {
-            var res = Calculator.Calculate("0.5/a");
-
-            Assert.AreEqual(res, "error", 0.01);
-            //test push
-        }
-
-        public void Test38()
         {
             var res = Calculator.Calculate("5+6+8");
 
@@ -341,7 +136,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test39()
+        public void Test23()
         {
             var res = Calculator.Calculate("5-6-8");
 
@@ -349,7 +144,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test40()
+        public void Test24()
         {
             var res = Calculator.Calculate("5/6/8");
 
@@ -357,7 +152,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test41()
+        public void Test25()
         {
             var res = Calculator.Calculate("5*6*8");
 
@@ -373,7 +168,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test43()
+        public void Test26()
         {
             var res = Calculator.Calculate("5+6/1");
 
@@ -381,7 +176,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test44()
+        public void Test27()
         {
             var res = Calculator.Calculate("5+6*8");
 
@@ -389,7 +184,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test45()
+        public void Test28()
         {
             var res = Calculator.Calculate("5-6+8");
 
@@ -397,7 +192,7 @@ namespace MDH.Calculator.Tests
             //test push
         }
 
-        public void Test46()
+        public void Test29()
         {
             var res = Calculator.Calculate("5-6/8");
 
@@ -431,9 +226,9 @@ namespace MDH.Calculator.Tests
 
         public void Test50()
         {
-            var res = Calculator.Calculate("5+-6");
+            var res = Calculator.Calculate("5+--/6");
 
-            Assert.AreEqual(res,"error", 0.01);
+            Assert.AreEqual(res, 0.8333, 0.01);
             //test push
         }
 
@@ -441,7 +236,7 @@ namespace MDH.Calculator.Tests
         {
             var res = Calculator.Calculate("5+-6");
 
-            Assert.AreEqual(res, "error", 0.01);
+            Assert.AreEqual(res,-1, 0.01);
             //test push
         }
 
@@ -449,7 +244,7 @@ namespace MDH.Calculator.Tests
         {
             var res = Calculator.Calculate("5*//*6");
 
-            Assert.AreEqual(res, "error", 0.01);
+            Assert.AreEqual(res, 30, 0.01);
             //test push
         }
 
@@ -457,25 +252,41 @@ namespace MDH.Calculator.Tests
         {
             var res = Calculator.Calculate("--56");
 
-            Assert.AreEqual(res, "error", 0.01);
+            Assert.AreEqual(res, -56, 0.01);
             //test push
         }
+
 
         public void Test54()
         {
-            var res = Calculator.Calculate("5+-6");
+            var res = Calculator.Calculate("+");
 
-            Assert.AreEqual(res, "error", 0.01);
+            Assert.AreEqual(res, 0, 0.01);
             //test push
-        }*/
-
-        [TestMethod]
-        public void BasicPlus()
-        {
-            var res = Parser.Parse("1-9+66-9999+5");
-            //var res = Calculator.Eval("2+2+2");
-            //Assert.AreEqual(res, 6);
         }
 
+        public void Test53()
+        {
+            var res = Calculator.Calculate("*");
+
+            Assert.AreEqual(res, 0, 0.01);
+            //test push
+        }
+
+        public void Test55()
+        {
+            var res = Calculator.Calculate("/");
+
+            Assert.AreEqual(res, 0, 0.01);
+            //test push
+        }
+
+        public void Test56()
+        {
+            var res = Calculator.Calculate("-");
+
+            Assert.AreEqual(res, 0, 0.01);
+            //test push
+        }
     }
 }
