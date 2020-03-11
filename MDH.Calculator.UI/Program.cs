@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 
 namespace MDH.Calculator.UI
 {
+    
     static class Program
     {
         /// <summary>
@@ -16,7 +18,7 @@ namespace MDH.Calculator.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new GUI());
         }
     }
 }

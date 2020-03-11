@@ -23,33 +23,76 @@ namespace MDH.Calculator
 
         public double Calculate()
         {
-            double num1 = Children[0].Name.Equals("E3") ? ((NumberNode)Children[0]).Value : ((RuleNode)Children[0]).Calculate();
-            double num2 = Children[2].Name.Equals("E3") ? ((NumberNode)Children[2]).Value : ((RuleNode)Children[0]).Calculate();
-            double result;
-            if (num2 == 0) throw new Exception("Cannot divide with 0!");
-            var symbol = ((SymbolNode)Children[1]).Symbol;
-            switch (symbol)
-            {
-                case '+':
-                    result = num1 + num2;
-                    break; 
-                case '-':
-                    result = num1 + num2;
-                    break;
-                case '*':
-                    result = num1 + num2;
-                    break;
-                case '/':
-                    result = num1 + num2;
-                    break;
-                default:
-                    throw new Exception("Invalid operation symbol!");
+            return ECalculate();
+        }
 
+        private (char, double)? E1Calculate(ASTNode e1) 
+        {
+            if (e1 is EmptyNode)
+                return null;
+
+            var rule = (RuleNode)e1;
+            char symbol = ((SymbolNode)rule.Children[0]).Symbol;
+            var t = TCalculate((RuleNode)rule.Children[1]);
+            var e1tuple = E1Calculate(rule.Children[2]);
+            var right = CalcOp(t, e1tuple);
+
+            return (symbol, right); 
+        }
+
+        private double ECalculate()
+        {
+            var num = TCalculate((RuleNode)Children[0]);
+            var e1 = E1Calculate(Children[1]);
+
+            return CalcOp(num, e1);
+        }
+
+        private double TCalculate(RuleNode t)
+        {
+            var num = FCalculate(t.Children[0]);
+            var e1 = T1Calculate(t.Children[1]);
+
+            return CalcOp(num, e1);
+        }
+
+        private double CalcOp(double left, (char, double)? right)
+        {
+            if (!right.HasValue)
+                return left;
+
+            switch (right.Value.Item1)
+            {
+                case '+': return left + right.Value.Item2;
+                case '-': return left - right.Value.Item2;
+                case '*': return left * right.Value.Item2;
+                case '/': return left / right.Value.Item2;
+                default: throw new CalculatorException();
             }
-            return result;
+        }
+
+        private (char, double)? T1Calculate(ASTNode t)
+        {
+            if (t is EmptyNode)
+                return null;
+
+            var rule = (RuleNode)t;
+            char symbol = ((SymbolNode)rule.Children[0]).Symbol;
+            var f = FCalculate(rule.Children[1]);
+            var e1tuple = E1Calculate(rule.Children[2]);
+            var right = CalcOp(f, e1tuple);
+
+            return (symbol, right);
+        }
+
+        private double FCalculate(ASTNode f)
+        {
+            return ((NumberNode)f).Value;
         }
 
     }
+
+
 
     public class NumberNode : ASTNode
     {
