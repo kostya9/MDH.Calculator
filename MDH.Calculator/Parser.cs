@@ -101,8 +101,16 @@ namespace MDH.Calculator
                 return f;
             }
 
-            var node = new RuleNode("T", f.Node);
-            return ParseResult.Success(node, f.NewPosition);
+
+            var t1 = T1Rule(f.NewPosition, input);
+            if (t1.IsError)
+            {
+                return t1;
+            }
+
+
+            var node = new RuleNode("T",f.Node, t1.Node);
+            return ParseResult.Success(node, t1.NewPosition);
         }
 
         private static ParseResult FRule(int position, string input)
