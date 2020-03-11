@@ -104,7 +104,7 @@ namespace MDH.Calculator.UI {
             }
             // Handle first operator
             else {
-                if (str == "+" || str == "/" || str == "*" || str == ".") {
+                if (str == "-" || str == "+" || str == "/" || str == "*" || str == ".") {
                     textBox1.Text = "0" + str;
                     return;
                 }
