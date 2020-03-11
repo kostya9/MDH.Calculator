@@ -11,15 +11,15 @@ using System.Windows.Forms;
 
 namespace MDH.Calculator.UI {
    
-    public partial class Form1 : Form {
+    public partial class GUI : Form {
 
-        //Calculator calculator;
         public static string calculator(string input) {
-            DataTable calculator = new DataTable();
-            var test = calculator.Compute(input, " ").ToString();
+            //DataTable calculator = new DataTable();
+            //var test = calculator.Compute(input, " ").ToString();
+            var test = Calculator.Eval(input).ToString();
             return  test;
         }
-        public Form1() {
+        public GUI() {
             InitializeComponent();
             ErrorLabel.Text = "";
             
@@ -31,7 +31,7 @@ namespace MDH.Calculator.UI {
             bool success = Int32.TryParse(str, out num);
 
             if (success == false) {
-                Console.WriteLine("Warning! Invalid number in ");
+                Console.WriteLine("Warning! Invalid number in num_Click()");
             } else if (num >= 0 && num <= 9) {
                 textBox1.AppendText(str);
             }
